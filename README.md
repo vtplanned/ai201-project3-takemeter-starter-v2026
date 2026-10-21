@@ -108,19 +108,18 @@ excluded because they contain no opinion to classify.
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** r/soccer, comments (not posts) copied by hand from seven threads flaired News, Stats or Media: PSG's 13-match unbeaten run, Cubarsí's World Cup passing stats, Man Utd's running stats, the Shearer/BBC segment on Chelsea's distance covered, Messi's walking pace in a Clásico (a 2017 thread, so older comments), the Barcelona/PSG kit clash, and the Clásico cameras. I skipped headline-plus-link posts, original posts, bot and mod comments, comments that only dump stats with no point, and duplicates. Paragraph breaks inside a comment were joined with spaces, usernames were not collected, and links were removed from two comments (noted in the note column).
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** I labelled 20 comments cold, with no AI, from my definitions alone (rows marked `cold` in the note column). After comparing them with Claude's reading of the same 20 I revised 3 of them (marked `cold; revised`), so 17 are pure cold labels. The other 180 rows were pre-labelled by Claude from my written definitions and decision rule and are marked `prelabeled`; the 34 it was least sure about also carry `unsure` in the note column. The 20 cold labels are the honest consistency check; the pre-labelled rows are the ones to distrust most if the model turns out to learn something odd.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| analysis | 63 | 31.5% |
+| hot_take | 69 | 34.5% |
+| reaction | 68 | 34.0% |
+| **Total** | 200 | 100% |
 
 **Three hard cases**
 
@@ -128,25 +127,25 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* "Bayern are worse than last year"
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `hot_take`. It compares two seasons but offers no checkable fact, so it is a bare claim. My first cold label was `analysis`, which applied my own rule loosely; I revised it, and it is marked `cold; revised`.
 
 **2.**
-> *The post:*
+> *The post:* "Their last lost was against my Sporting! 💚🤍🦁"
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `reaction`
 >
-> *I chose, because:*
+> *I chose, because:* `reaction`. It contains a checkable fact (they lost to Sporting) but the fact is not backing any point; it is the commenter celebrating their club. The neighbouring comment "Sporting, obviously. We were the last team to defeat them in the Champions League" is `analysis`, because there the same fact directly answers the question being asked.
 
 **3.**
-> *The post:*
+> *The post:* The long Liverpool comment explaining that "when you reduce the training intensity, you get a few months of improved fitness… but you pay for it later…"
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `hot_take`. It is a careful, reasoned explanation, but nothing in it can be checked: no number, date, result or source. This is the same boundary as my hardest-boundary post, and my rule treats a well-argued comment with no checkable fact as `hot_take`.
 
 ---
 
@@ -154,15 +153,21 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`, fine-tuned for 3-way classification. Trained on an Apple Silicon GPU (`mps`), torch 2.14.1, Python 3.13.5.
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42.
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing. All settings are the notebook defaults. One thing to know for next unit: max length 128 means the model only reads the first 128 tokens of each comment, and my longest `analysis` comments can be cut off before their facts appear.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** train 139 / val 31 / test 30 (stratified 70/15/15 of 200 rows).
+
+| Label | Train | Val | Test |
+|---|---|---|---|
+| analysis | 43 | 10 | 10 |
+| hot_take | 48 | 11 | 10 |
+| reaction | 48 | 10 | 10 |
+
+No label has fewer than 8 examples in the test split, but 10 per label is still small: one wrong prediction moves a label's recall by 10 points, so expect scores to move between seeds next unit.
 
 
 
@@ -179,17 +184,17 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Which community to use. r/soccer was my pick, but the posts I found were almost all goal and highlight clips with no text.
+- *What came back:* Claude pointed out that a text classifier can't learn from video-link posts and suggested collecting the comments under News and Stats posts instead, skipping headline-only posts.
+- *What I changed:* I switched to collecting comments, and that also made the labels (analysis, hot_take, reaction) fit what people actually write there.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Help filling in my acceptance criteria template with accurate facts, because I was short on time.
+- *What came back:* Claude read the notebook and the staff taxonomy and drafted all five targets with reasons. It also caught three things in my template: criteria must hold in every seed rather than on average, the confidence measure the notebook reports is by thirds rather than a threshold, and the staff set is labelled under the staff's definitions, not mine.
+- *What I changed:* I adopted the reworded criteria. To be plain about it: the five target numbers in `criteria.md` were drafted by Claude, and I committed them as drafted.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** Claude pre-labelled 180 of my 200 rows (everything except the 20 cold rows) from my written definitions and decision rule, and also helped extract the comments from pasted thread text into CSV. Those rows are marked `prelabeled` in the note column, and 34 carry `unsure`. The 20 cold rows were labelled by me alone.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
