@@ -110,7 +110,7 @@ excluded because they contain no opinion to classify.
 
 **Where the posts came from:** r/soccer, comments (not posts) copied by hand from seven threads flaired News, Stats or Media: PSG's 13-match unbeaten run, Cubarsí's World Cup passing stats, Man Utd's running stats, the Shearer/BBC segment on Chelsea's distance covered, Messi's walking pace in a Clásico (a 2017 thread, so older comments), the Barcelona/PSG kit clash, and the Clásico cameras. I skipped headline-plus-link posts, original posts, bot and mod comments, comments that only dump stats with no point, and duplicates. Paragraph breaks inside a comment were joined with spaces, usernames were not collected, and links were removed from two comments (noted in the note column).
 
-**How I labelled them:** I labelled 20 comments cold, with no AI, from my definitions alone (rows marked `cold` in the note column). After comparing them with Claude's reading of the same 20 I revised 3 of them (marked `cold; revised`), so 17 are pure cold labels. The other 180 rows were pre-labelled by Claude from my written definitions and decision rule and are marked `prelabeled`; the 34 it was least sure about also carry `unsure` in the note column. The 20 cold labels are the honest consistency check; the pre-labelled rows are the ones to distrust most if the model turns out to learn something odd.
+**How I labelled them:** I labelled 20 comments cold, with no AI, from my definitions alone (rows marked `cold` in the note column). After comparing them with Claude's reading of the same 20 I revised 3 of them (marked `cold; revised`), so 17 are pure cold labels. The other 180 rows were pre-labelled by Claude from my written definitions and decision rule and are marked `prelabeled`; the 34 it flagged as least sure were the ones I went through individually, and I kept all 34 labels, so they are marked `prelabeled; reviewed`. The 20 cold labels are the honest consistency check; the pre-labelled rows are the ones to distrust most if the model turns out to learn something odd.
 
 **Counts per label:**
 
@@ -194,7 +194,7 @@ No label has fewer than 8 examples in the test split, but 10 per label is still 
 - *What came back:* Claude read the notebook and the staff taxonomy and drafted all five targets with reasons. It also caught three things in my template: criteria must hold in every seed rather than on average, the confidence measure the notebook reports is by thirds rather than a threshold, and the staff set is labelled under the staff's definitions, not mine.
 - *What I changed:* I adopted the reworded criteria. To be plain about it: the five target numbers in `criteria.md` were drafted by Claude, and I committed them as drafted.
 
-**Pre-labelling disclosure:** Claude pre-labelled 180 of my 200 rows (everything except the 20 cold rows) from my written definitions and decision rule, and also helped extract the comments from pasted thread text into CSV. Those rows are marked `prelabeled` in the note column, and 34 carry `unsure`. The 20 cold rows were labelled by me alone.
+**Pre-labelling disclosure:** Claude pre-labelled 180 of my 200 rows (everything except the 20 cold rows) from my written definitions and decision rule, and also helped extract the comments from pasted thread text into CSV. Those rows are marked `prelabeled` in the note column, and the 34 Claude flagged as unsure are marked `prelabeled; reviewed` (I went through each one and kept its label). The 20 cold rows were labelled by me alone.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
