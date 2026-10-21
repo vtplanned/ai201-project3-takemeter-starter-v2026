@@ -42,6 +42,13 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+The community is r/soccer, filtered to posts flaired "News". TakeMeter sorts
+the comments people write under those news posts into `analysis`, `hot_take`,
+and `reaction`, depending on whether the comment backs its point with a
+checkable fact, asserts a claim with nothing behind it, or just expresses a
+feeling. Headline-only posts, pure-report posts, and bot/mod comments are
+excluded because they contain no opinion to classify.
+
 
 
 ---
@@ -54,31 +61,41 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `analysis`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Backs its point with at least one specific checkable fact (a result, standing, stat, date, quote, or named source).
 
 **Example 1:**
->
+> They are mid table with a very thin squad that needed more investment in the summer. Brighton have battered multiple teams this season including Arsenal and Villa. A lot of Brighton's goals were wonder strikes and individual errors. I have no clue why you would consider firing him.
 
 **Example 2:**
->
+> Honestly it's easy to make fun of united but asking any PL side to get 5 wins in a row is a lot isn't it. This article from when Man U had 4 in a row, and played a relegation contender, says that 11 teams had done it since United last had, and Chelsea had in 2026. [OneFootball link, then a dated list: Chelsea – January 2026, Aston Villa – December 2025, Manchester City – December 2025 … Tottenham – October 2024]
+
+### `hot_take`
+
+**Definition:** A confident claim or judgment with nothing checkable offered to back it.
+
+**Example 1:**
+> Football fans are generally idiots. Throw abuse at players for 90 minutes, then get offended if a player makes a gesture back.
+
+**Example 2:**
+> Don't know how football fans can boo an ex player for every touch and then expect them to be the pinnacle of decorum in return
+
+### `reaction`
+
+**Definition:** An immediate response to the news that expresses a feeling or a quip, with no claim to argue.
+
+**Example 1:**
+> Dominance
+
+**Example 2:**
+> And that's just at the under 12's games
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` and `hot_take`. The post that sits between them is a comment explaining why Azerbaijani fans support any Azerbaijani club in Europe ("It seems you're not familiar with the specifics of football fan culture in the Caucasus…"). It is a reasoned argument, but it rests on local knowledge, not a checkable fact.
 
-**The decision rule I used every time:**
+**The decision rule I used every time:** If the comment states at least one specific checkable fact in support of its point, it's `analysis`, even if the tone is opinionated. A bare superlative ("different planet", "the gap is wild") or an explanation from general knowledge with no checkable fact is not a fact, so it's `hot_take`.
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
 
