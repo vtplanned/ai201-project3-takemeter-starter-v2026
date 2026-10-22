@@ -215,7 +215,7 @@ No label has fewer than 8 examples in the test split, but 10 per label is still 
 | F1 — `label_one` |  |  |  |
 | F1 — `label_two` |  |  |  |
 
-**What I predicted before I looked:**
+**What I predicted before I looked:** I predict the trained model beats the baseline most on analysis, because forum regulars provide stats to back up, and does no better on hot_take, because hot takes are vague.
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
