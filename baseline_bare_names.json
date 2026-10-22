@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": false,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.43333333333333335,
+    "f1_macro": 0.3674242424242424,
+    "per_label": {
+      "analysis": {
+        "precision": 1.0,
+        "recall": 0.1,
+        "f1": 0.18181818181818182,
+        "support": 10
+      },
+      "hot_take": {
+        "precision": 0.391304347826087,
+        "recall": 0.9,
+        "f1": 0.5454545454545454,
+        "support": 10
+      },
+      "reaction": {
+        "precision": 0.5,
+        "recall": 0.3,
+        "f1": 0.37499999999999994,
+        "support": 10
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "I\u2019ve seen many reasons for why we beat them 3-1 at Elland Road, but knowing that we\u2019re the team that runs the most/longest distances (don\u2019t remember which) this does put some things into perspective. Then again they\u2019re in 6th and we\u2019re in 15th so I\u2019m not sure I agree with these pundits that \u201cmore running\u201d equals top level football. We\u2019re doing it because we have no other choice.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "We are just happy to be included here to be honest",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Such a dumb red card",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Back in 1991, United had to create an away kit specifically for the Cup Winners Cup final, as UEFA deemed that all of the existing home and away kits for both teams clashed. We lost the toss and made an all-white kit, while Barca had to wear their away kit.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Sporting, obviously. We were the last team to defeat them in the Champions League.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "They're playing like players who have achieved job security for the next decade and don't really have a reason to put any extra effort to prove themselves. Go figure",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Honestly these stats surprise me. I watched the first half of the City game and I thought they looked pretty good.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Bayern are worse than last year",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "He could in the right system. Before you write me off let me explain why and give an example of how it has been done before extremely successfully. Juve 14/15 had Pirlo playing as a central midfielder with very little running (he was mid 30's at that point so he didn't have the strength in his legs anymore) to amazing effect. It worked as they played a 3 man midfield with 2 powerhouse box to box mids in Pogba and Vidal playing alongside him who did all of the running and defensive work which allowed Pirlo to play make from deep and drift around finding space. Chelsea in 16/17 with the 343 also managed to show how Messi could end up playing in the midfield in the role which Fabregas ended up playing that season. Brought in for the games in which Barca will be expected to dominate (which would be most in the season, unlike Chelsea which had comparatively much harder fixtures more often) and used as a super sub in tougher games where Barcelona are struggling to open the opposition defence up. In Barca's current system I'll agree that he'd be too much of a defensive liability to be worth playing however for how much he means to Barca I don't believe it would be a stretch to assume they'd shape their system around him as he eventually enters the later years of his career.",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "shows how he's able to play every single game at a high af level week in week out. UCL matches, league matches, cup, etc. It doesn't really change his performance either. He still plays excellently pretty much every game.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Yeah I don't really get why anyone would give a shit about this lol",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "This is true but there's also the other side of things. We're 1st in chances created, 1st in touches in opposition box, 2nd on XG, 5th in shots on target, 3rd in ball recoveries, 3rd in Possession %. Fact is that we've not been clinical in attack and we're lacking in defence. That makes us an average team but not as bad as what the media portrays",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "It's not football, it's LaLiga. We're watching a telenovela that sometimes has a ball in shot.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Obviously it's because their midfield is so good that they don't need to run",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Hey, they've gone 449.1km",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "There\u2019s no rules, it\u2019s just in your best interest for them to be different otherwise it goes against the entire point of them",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Looking more tired: 1st The team fitness looks like absolute shit compared to last year. Clearly Amorim's fitness coaches knew what they were doing.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "PSG did well but Barcelona were atrocious at the back.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "All that for Valverde-Tchouameni pivot. (In Shaa Allah they'll play)",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "It's a mini version though, Slot inherited an uber fit squad from Klopp and his fitness-light approach saw us walk the league with minimal injuries, similar to Carrick getting a fit Amorim squad and boosting morale with a light workload giving them a strong end to last season. both had hard fall offs once their approach took grip, we barely made it into the CL last year and they are racking up embarrassing defeats while being totally out worked. Yes Slot won more, but our squad is and was also far superior to theirs and that's why we could win a league and passively stumble into 5th whereas their peak was 3rd place well of the top 2 and now looking down the barrel of a return to the bottom half of the table. Though I do think it's important to acknowledge that Slot is a much better coach that Carrick. The levels are different but the arc is the same.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Not completely true, no. It was filmed almost a month before the season started, and he's specifically talking about players coming back from the world cup taking it easy at first. He himself had only been back to train for a bit over a week at that point. So there's nothing about not having doing running training \"all season\". He also just says something along the lines of \"when you come back from the world cup, you have to take it chill at first. Just chill\" or something like that",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "24 or 25, but have never played with any accomplished veterans. old chelsea teams ALWAYS had multiple players who had played in or won finals - champions league, world cup, fa cup. played in title challenges and lost, and also won leagues and knew what it takes over an entire season. and coaches with that experience too. the last few years chelsea has none of that. really like some of these players but who do they have to learn from? there is no mourinho or ancelotti or conte or tuchel. no terry, lampard, cech, azpilicueta, fabregas, kante, you get the point. no one to learn from. no one to stabilize the team. no one to help the young players learn and grow and mature after tough losses or mistakes. just keep making the same mistakes over and over again. this whole plan is flawed. and all it would take is buying the right 2 or 3 experienced veterans to bring this to the team.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Cole Palmer*",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Then maybe the distance covered stats are because of this too? We covered the same amount of distance vs Ipswich as Arsenal vs Converty. We played against 10 men Man city where the 70mins were in their half. There\u2019s always two sides to these stats",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "What Cuba is doing at 19, starting for Spain and leading the most demanding defensive system in Europe, is unheard of\u2026 yet he gets more criticism than any other defender because he makes a mistake once in a while (some out of his control, thx Kov\u00e1cs\u2026).",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "That ref booking Mosquera really damaged Mosquera's defending. He was so assured and solid before the booking. But the card gave Kvara the license to put pressure on him. Should have subbed in Timber immediately. But there are other factors too, it didn't help that Saka and Odegaard were completely out of form. The current form Odegaard would have made a huge difference in midfield and in attack. Also having Bruno in midfield this season will go a long way in controlling the midfield better.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "WHY ARE YOU (not) RUNNING!?",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Real Madrid 2022 Black Magic",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Not really surprised by this, they look physically off to the naked eye. Plus having Mainoo and Teilemans in the most physically demanding position will make your stats look like that, also attackers like Cunha and Rashford not tracking back doesn;t help.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Iirc it was the one where Kounde scored but then got injured and then didn't play against Inter? Kounde was so good that season, I just imagine how things could've been different if he played the 2nd leg",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    }
+  ]
+}

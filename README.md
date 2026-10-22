@@ -210,16 +210,21 @@ No label has fewer than 8 examples in the test split, but 10 per label is still 
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.367 | 0.667 | +0.300 |
+| Macro F1 | 0.232 | 0.674 | +0.443 |
+| F1 — `analysis` | 0.513 | 0.700 | +0.187 |
+| F1 — `hot_take` | 0.000 | 0.545 | +0.545 |
+| F1 — `reaction` | 0.182 | 0.778 | +0.596 |
+
+Baseline: `facebook/bart-large-mnli`, zero-shot, using my label definitions, scored on the same 30 posts in `test_split.csv` as the trained model (seed 42, 10 per label).
 
 **What I predicted before I looked:** I predict the trained model beats the baseline most on analysis, because forum regulars provide stats to back up, and does no better on hot_take, because hot takes are vague.
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
-**What the gap actually means:**
+**What the gap actually means:** The trained model beat the baseline on every measure (accuracy 0.667 vs 0.367, macro F1 0.674 vs 0.232), so fine-tuning added something. My prediction was wrong in both parts. The smallest gain was on `analysis` (+0.187), the label I expected to gain most, because the baseline already did best there (F1 0.513): it can read a number or a named source straight from the definition. The largest gains were on `reaction` (+0.596) and `hot_take` (+0.545), and the baseline scored 0.000 F1 on `hot_take`, so "no better" was off. Those labels depend on how r/soccer commenters talk, which a definition alone doesn't give the baseline.
+
+I also ran the baseline without my definitions (bare label names, `baseline_bare_names.json`): accuracy 0.433, macro F1 0.367 (`analysis` 0.182, `hot_take` 0.545, `reaction` 0.375). That is a higher overall score than with my definitions, so as written they helped on `analysis` (+0.331 F1) but hurt on `hot_take` (-0.545), worth about -0.07 accuracy overall. The table above uses the with-definitions run; the trained model also beats the bare-names run (0.667 vs 0.433 accuracy). All of this is 10 posts per label and one seed, so the gaps are indicative, not settled.
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
 
