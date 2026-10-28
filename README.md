@@ -239,24 +239,28 @@ I also ran the baseline without my definitions (bare label names, `baseline_bare
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.65 in every seed | 0.667 | 0.467 | 0.633 | MISSED |
+| 2. Per-label F1 | ≥ 0.55 each label (`analysis` ≥ 0.45) | analysis 0.700, hot_take 0.545, reaction 0.778 | analysis 0.000, hot_take 0.529, reaction 0.625 | analysis 0.533, hot_take 0.560, reaction 0.800 | MISSED |
+| 3. Balance of labels.csv | no label > 50%, none < 20% | 34.5% / 34.0% / 31.5% | same (property of the file) | same (property of the file) | MET |
+| 4. Agreement with staff | ≥ 23 of 30 | n/a (not seed-dependent) | n/a | n/a | pending |
+| 5. Confidence | most-sure third ≥ 0.20 above least-sure third | 0.700 vs 0.600 (+0.100) | 0.700 vs 0.500 (+0.200) | 0.800 vs 0.600 (+0.200) | MISSED |
+
+Device for all three runs: `mps` (Apple Silicon GPU), torch 2.14.1, max length 128. Accuracy moved 0.200 across seeds, more than the 10-point line where the notebook says the dataset is too small or too lopsided for a stable measure. Each test split has 30 posts (10 per label), so one prediction is worth 3.3 accuracy points.
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+Seed 42, 30 test posts:
 
-**My biggest off-diagonal number, and what it means:**
+| true \ predicted | analysis | hot_take | reaction |
+|---|---|---|---|
+| **analysis** | 7 | 3 | 0 |
+| **hot_take** | 3 | 6 | 1 |
+| **reaction** | 0 | 3 | 7 |
+
+**My biggest off-diagonal number, and what it means:** Three cells tie at 3: real `analysis` called `hot_take`, real `hot_take` called `analysis`, and real `reaction` called `hot_take`. The `analysis`/`hot_take` pair is symmetric (3 each way), so the model finds that boundary hard in both directions rather than leaning one way, and `hot_take` is on the wrong side of all three errors: it is the label the model confuses with both of the others.
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
