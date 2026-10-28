@@ -305,7 +305,9 @@ Seed 42, 30 test posts:
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 21 / 30 = 70%
+
+My first set of 30 labels came from outside help that I pasted without reviewing, so I discarded it and relabelled all 30 myself from `data/staff_taxonomy.md`. The rate above is from that second, own pass. The staff answers had appeared in a chat I was using before I labelled, so I cannot rule out that it nudged me even though I did not read it closely.
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -327,25 +329,88 @@ Seed 42, 30 test posts:
      written rule two different ways on 30 posts, that is direct evidence about
      what you did across your own 200. -->
 
-**1.**
-> *The post:*
+**1.** (sp_005)
+> *The post:* Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week.
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `hot_take`
 >
-> *My call, and why:*
+> *My call, and why:* Staff is right. Rule 1 says the fact has to be load-bearing. The post has two specific percentages and isolates one variable (mileage from 35 to 50), and those facts are the reason for the claim that shoes aren't the whole story. I read 'isn't the whole story' as the opening opinion and treated the numbers as decoration.
 >
-> *Which pile:*
+> *Which pile:* (a)
 
-**2.**
-> *The post:*
+**2.** (sp_009)
+> *The post:* The 10K route was remeasured in 2021 and came out 60 metres long. Everyone comparing PBs from before and after that is comparing two different races, which is about 12 seconds at club pace.
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `reaction`
 >
-> *My call, and why:*
+> *My call, and why:* Staff is right. Rule 3 says recency does not outrank evidence. The remeasure date, the 60 metres and the 12-second conversion are all checkable and they carry the conclusion that PBs across 2021 aren't comparable. The post spends its words on the evidence, not on a feeling, and I misread the phrasing as an immediate observation.
 >
-> *Which pile:*
+> *Which pile:* (a)
 
-**What the pattern in my disagreements tells me:**
+**3.** (sp_010)
+> *The post:* Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people.
+>
+> *Staff said / I said:* `analysis` / `hot_take`
+>
+> *My call, and why:* I still think my reading is defensible. The post has checkable facts (three runners, the same session, within 10 seconds over 5 miles), but the second sentence is a hedged conclusion drawn from a very small sample. Under Rule 1 the question is whether the fact carries the argument or decorates a conclusion already reached, and the rule is clear but the boundary is a real one here.
+>
+> *Which pile:* (c)
+
+**4.** (sp_013)
+> *The post:* The club needs to stop pretending the Tuesday session is for everyone. It isn't and it never has been.
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. Rule 2: a reaction reports what just happened to the writer and how it felt. This is a general claim about the club with no support. I mistook a blunt tone for immediacy.
+>
+> *Which pile:* (a)
+
+**5.** (sp_016)
+> *The post:* If you need a gel before 90 minutes you have a fuelling problem, not an energy problem.
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. It asserts a general principle about fuelling, not something that happened to the writer. The 90 minutes is a stated threshold, not evidence, so under Rule 2 it is an unsupported claim. I let the specific number push me toward reaction.
+>
+> *Which pile:* (a)
+
+**6.** (sp_017)
+> *The post:* Road racing peaked in about 2015 and everything since has been marketing.
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. It is a general claim about road racing history, not a report of something that just happened to the writer. Rule 2 is clear and I treated nostalgia as immediacy.
+>
+> *Which pile:* (a)
+
+**7.** (sp_020)
+> *The post:* Every injury thread on this forum is the same injury and the same three replies.
+>
+> *Staff said / I said:* `hot_take` / `analysis`
+>
+> *My call, and why:* I think my reading is defensible. The post reports an observation about this specific forum, not a universal claim about all forums, and it could be checked by reading the injury threads. Staff called it a confident generalisation with no support. The rule does not clearly say whether an observation about a forum counts as a checkable fact, since its examples are stats, dates, times, quotes and named comparisons, so I am arguing it is a gap in the definitions. It is weaker than a post that cites actual numbers, and closer to analysis than to a pure opinion like 'heart rate zones are astrology'.
+>
+> *Which pile:* (b)
+
+**8.** (sp_027)
+> *The post:* Wind was so bad on the out section I was leaning at about 20 degrees. Coming back felt like cheating.
+>
+> *Staff said / I said:* `reaction` / `hot_take`
+>
+> *My call, and why:* Staff is right. Rule 2: this is about what just happened to the writer in a race and how it felt. The 20 degrees describes the conditions and is not evidence for a claim about wind, and 'felt like cheating' is the emotion. I treated a specific detail as an argument.
+>
+> *Which pile:* (a)
+
+**9.** (sp_029)
+> *The post:* Just realised the shoes I set every PB in this year are the ones I bought by accident in the wrong size.
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. Rule 2: this is an immediate personal realisation ('just realised') about the writer's own shoes, not a general claim. It is wry, but the moment of noticing is the point. I treated 'I set PBs in these shoes' as load-bearing evidence when it is the story being told.
+>
+> *Which pile:* (a)
+
+**What the pattern in my disagreements tells me:** Six of the nine are pile (a): the written rule covered the post and I applied it loosely. Three of those (sp_013, sp_016, sp_017) are general claims that I labelled `reaction`, so I read a blunt tone or a specific number as immediacy; that is the `reaction`/`hot_take` boundary. Two more (sp_005, sp_009) are the opposite error, where I under-called `analysis` because the post opened like an opinion or an observation. That is direct evidence about my own 200 labels: the same two boundaries are where my cold labels went wrong in unit 5 ("Bayern are worse than last year" and "It's their league" were both revised). The two disagreements I still argue (sp_010 and sp_020) are both `analysis` vs `hot_take` posts where the fact is thin, so that pair is the genuinely hard one, and it is also the pair my model confuses most in both directions.
 
 
 
