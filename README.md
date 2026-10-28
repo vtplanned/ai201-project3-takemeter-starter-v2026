@@ -157,7 +157,7 @@ excluded because they contain no opinion to classify.
 
 **Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42.
 
-**Anything I changed from the defaults, and why:** Nothing. All settings are the notebook defaults. One thing to know for next unit: max length 128 means the model only reads the first 128 tokens of each comment, and my longest `analysis` comments can be cut off before their facts appear.
+**Anything I changed from the defaults, and why:** Nothing for the first run; all settings were the notebook defaults. The one change in this project is the improvement run, which raised epochs from 3 to 6 (see The Improvement). One thing to know for next unit: max length 128 means the model only reads the first 128 tokens of each comment, and my longest `analysis` comments can be cut off before their facts appear.
 
 **Split sizes:** train 139 / val 31 / test 30 (stratified 70/15/15 of 200 rows).
 
@@ -193,6 +193,8 @@ No label has fewer than 8 examples in the test split, but 10 per label is still 
 - *What I asked for:* Help filling in my acceptance criteria template with accurate facts, because I was short on time.
 - *What came back:* Claude read the notebook and the staff taxonomy and drafted all five targets with reasons. It also caught three things in my template: criteria must hold in every seed rather than on average, the confidence measure the notebook reports is by thirds rather than a threshold, and the staff set is labelled under the staff's definitions, not mine.
 - *What I changed:* I adopted the reworded criteria. To be plain about it: the five target numbers in `criteria.md` were drafted by Claude, and I committed them as drafted.
+
+**Other AI use in unit 6:** Claude ran the baseline, the three-seed runs and the agreement script on my machine, built `my_staff_labels.csv` from the exact post text, and drafted my verdict table, diagnoses and README text for me to review. Claude saw the staff answer key in our chat before I labelled, so it did not weigh in on who was right on any disagreement.
 
 **Pre-labelling disclosure:** Claude pre-labelled 180 of my 200 rows (everything except the 20 cold rows) from my written definitions and decision rule, and also helped extract the comments from pasted thread text into CSV. Those rows are marked `prelabeled` in the note column, and the 34 Claude flagged as unsure are marked `prelabeled; reviewed` (I went through each one and kept its label). The 20 cold rows were labelled by me alone.
 
@@ -426,21 +428,38 @@ My first set of 30 labels came from outside help that I pasted without reviewing
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** Training epochs, from 3 to 6. Nothing else: same labels, same taxonomy, same criteria, same learning rate (2e-5), batch size (16), max length (128), and the same three seeds, so each seed has the same train/test split as before. The "after" numbers are in `results_three_seeds_after.json`. I ran the same notebook code for sections 6 and 7 as a plain script, because the Jupyter kernel hung.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** The criterion 2 miss on seed 7, where `analysis` F1 was 0.000 (the model got no `analysis` posts right on that split). With 139 training examples and 3 epochs, one possible cause was an undertrained model rather than only a labelling problem. The agreement report pointed mostly at my labelling, which I did not have time to redo, so I tested the training hypothesis, the one change available that fit the time.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.65 in every seed | 0.733 | 0.733 | 0.667 | MET |
+| 2. Per-label F1 | ≥ 0.55 each label (`analysis` ≥ 0.45) | analysis 0.870, hot_take 0.556, reaction 0.737 | analysis 0.571, hot_take 0.692, reaction 0.900 | analysis 0.737, hot_take 0.500, reaction 0.762 | MISSED |
+| 3. Balance of labels.csv | no label > 50%, none < 20% | unchanged (31.5 / 34.5 / 34.0%) | unchanged | unchanged | MET |
+| 4. Agreement with staff | ≥ 23 of 30 | n/a | n/a | n/a | MISSED (unchanged; training cannot move it) |
+| 5. Confidence | most-sure third ≥ 0.20 above least-sure third | 0.900 vs 0.600 (+0.300) | 0.900 vs 0.600 (+0.300) | 0.500 vs 0.700 (-0.200) | MISSED |
 
-**Did it help, and how do I know:**
+Before and after side by side (seeds 42 / 7 / 2024), device `mps` for both:
+
+| Measure | Before (3 epochs) | After (6 epochs) |
+|---|---|---|
+| Accuracy | 0.667 / 0.467 / 0.633 (mean 0.589) | 0.733 / 0.733 / 0.667 (mean 0.711) |
+| F1 `analysis` | 0.700 / 0.000 / 0.533 | 0.870 / 0.571 / 0.737 |
+| F1 `hot_take` | 0.545 / 0.529 / 0.560 | 0.556 / 0.692 / 0.500 |
+| F1 `reaction` | 0.778 / 0.625 / 0.800 | 0.737 / 0.900 / 0.762 |
+
+Accuracy spread across seeds fell from 0.200 to 0.067. Seed-42 confusion matrix after the change:
+
+| true \ predicted | analysis | hot_take | reaction |
+|---|---|---|---|
+| **analysis** | 10 | 0 | 0 |
+| **hot_take** | 3 | 5 | 2 |
+| **reaction** | 0 | 3 | 7 |
+
+**Did it help, and how do I know:** Partly. Accuracy rose on all three seeds (mean 0.589 to 0.711), the spread fell from 0.200 to 0.067, and seed 7's `analysis` F1 went from 0.000 to 0.571, which supports the undertraining explanation for that collapse. Criterion 1 flipped from MISSED to MET. But `hot_take` did not improve (0.545 / 0.529 / 0.560 became 0.556 / 0.692 / 0.500, and the 0.500 on seed 2024 is now what fails criterion 2), and criteria 2 and 5 are still missed. On seed 2024 the confidence gap reversed: the model's most-sure third was less accurate than its least-sure third, and I don't have enough to say why. Caveats: one change, one run per seed, 30 test posts (one prediction is 3.3 points), and Apple Silicon arithmetic is not perfectly repeatable, so part of the gain could be noise. Three of three seeds improving is harder to put down to one lucky draw.
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
@@ -451,12 +470,18 @@ My first set of 30 labels came from outside help that I pasted without reviewing
 
 ## What's Still Broken
 
+**Criterion 2 (per-label F1):** `hot_take` F1 is 0.500 on seed 2024 against a 0.55 target. I would relabel the `reaction`/`hot_take` and `analysis`/`hot_take` boundaries the way the agreement report says I applied them loosely (6 of my 9 disagreements were pile a), then retrain. I stopped because doing that properly means re-reading rows, which did not fit in the time, and this unit allows only one change.
+
+**Criterion 4 (agreement):** 21 of 30 against a target of 23. Training cannot change it. It would take re-reading the rules before relabelling, and again I stopped because it was out of scope for the one allowed change.
+
+**Criterion 5 (confidence):** missed on seed 2024 (a reversal, -0.20). With 10 posts per third, one prediction moves a third by 10 points, so I could not resolve it. A larger test set, meaning more labelled posts, is what it needs.
+
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
 
 
 **The gap between what I meant my labels to capture and what the model
-learned:**
+learned:** I meant `hot_take` to be a confident claim with nothing checkable behind it, but I also labelled some blunt or heated comments `reaction`, and the matrix shows it: after the change `analysis` is clean (10 of 10 on seed 42), while 3 real `hot_take` posts were called `analysis` and 3 real `reaction` posts were called `hot_take`. What the model learned about `analysis` matches what I meant, but `hot_take` is still the catch-all between the other two, which is where my own labels were inconsistent.
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
 
